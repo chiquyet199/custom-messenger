@@ -11,6 +11,10 @@ class ChatBox extends Component {
     currentUser: PropTypes.object,
   }
 
+  focusInput = e => {
+    e.stopPropagation()
+  }
+
   render() {
     const { activeThread, currentUser } = this.props
     if (!activeThread) return <div />
@@ -27,7 +31,7 @@ class ChatBox extends Component {
           )
         })}
         <div className="mes-input">
-          <input placeholder="Say something....." />
+          <input onClick={this.focusInput} placeholder="Say something....." />
         </div>
       </div>
     )

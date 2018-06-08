@@ -38,7 +38,9 @@ class ThreadItem extends Component {
       prevState => ({ showContent: !prevState.showContent }),
       () => {
         if (this.state.showContent) this.props.setActiveThread(this.props.id)
-        else this.props.clearActiveThread()
+        else {
+          setTimeout(this.props.clearActiveThread, 400)
+        }
       },
     )
   }

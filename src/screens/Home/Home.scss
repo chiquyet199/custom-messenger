@@ -20,6 +20,9 @@
       letter-spacing: 3px;
       text-align: center;
       padding: 20px;
+      @media only screen and (max-width: $mobile) {
+        font-size: 14px;
+      }
       &:hover {
         cursor: pointer;
       }
@@ -38,6 +41,9 @@
       height: 5px;
       background: $active;
       transition: all 0.3s ease-in-out;
+      @media only screen and (max-width: $mobile) {
+        top: 50px;
+      }
       &.friends {
         transform: translateX(100%);
       }
