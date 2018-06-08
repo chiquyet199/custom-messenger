@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
 import store from 'configs/store'
-import App from './app'
+import App from './App'
 
 import 'assets/css/base.scss'
 import 'assets/css/common.scss'
