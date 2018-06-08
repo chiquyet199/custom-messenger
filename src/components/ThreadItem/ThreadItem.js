@@ -31,14 +31,14 @@ class ThreadItem extends Component {
     return (
       <div className="thread-item-wrapper">
         <div className="thread-item">
-          <Avatar src={avatar} />
+          <Avatar url={avatar} />
           <div className="tri-content-overview">
             <p className="tri-name">{name}</p>
             <p className="tri-last-mes">{lastMessage}</p>
           </div>
           <span className="tri-time">{time}</span>
         </div>
-        {showContent && <ChatBox id />}
+        {/* {showContent && <ChatBox id />} */}
       </div>
     )
   }
