@@ -6,7 +6,9 @@ import './Avatar.scss'
 const Avatar = props => {
   const { className, url } = props
   const imgSource = url ? url : require('assets/images/user-placeholder.svg')
-  return <img src={imgSource} className={`db-avatar ${className || ''} `} />
+  return (
+    <div style={{ backgroundImage: 'url(' + imgSource + ')' }} className={`db-avatar ${className || ''} `} />
+  )
 }
 
 Avatar.propTypes = {

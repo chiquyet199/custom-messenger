@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { getListThreads, createNewThread } from 'services/rest'
 
 export const CREATE_THREAD = 'CREATE_THREAD'
@@ -25,8 +26,9 @@ function createThread(userIds) {
 }
 
 function getThreads(userId) {
-  return dispatch => {
+  return (dispatch, getState) => {
     getListThreads(userId).then(threads => {
+      enrichData(threads, getState)
       dispatch({
         type: GET_THREADS,
         payload: threads,
@@ -34,6 +36,16 @@ function getThreads(userId) {
       navigate(routes.Home)
     })
   }
+}
+
+function enrichData(threads, getState) {
+  const usersById = getState().users.usersById
+  const currentUser = getState().user
+  _.map(threads, thread => {
+    const idx = thread.userIds.indexOf(currentUser.id)
+    const friendId = thread.userIds[idx === 1 ? 0 : 1]
+    thread.friend = { id: friendId, name: usersById[friendId].name, avatar: usersById[friendId].avatar }
+  })
 }
 
 function setActiveThread(threadId) {

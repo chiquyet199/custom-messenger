@@ -17,7 +17,7 @@ class ThreadsList extends Component {
         {_.map(threads, (thread, idx) => {
           return (
             <AnimatedItem key={idx} idx={idx}>
-              <ThreadItem />
+              <ThreadItem {...thread} />
             </AnimatedItem>
           )
         })}

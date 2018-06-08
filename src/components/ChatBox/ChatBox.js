@@ -4,12 +4,18 @@ import { connect } from 'react-redux'
 import './ChatBox.scss'
 
 class ChatBox extends Component {
-  static propTypes = {}
+  static propTypes = {
+    activeThread: PropTypes.object,
+  }
 
   render() {
-    const {} = this.props
+    // const {} = this.props.activeThread
     return <div />
   }
 }
 
-export default connect()(ChatBox)
+const mapStateToProps = state => {
+  return { activeThread: state.threads.activeThread }
+}
+
+export default connect(mapStateToProps)(ChatBox)
