@@ -1,0 +1,48 @@
+@import './../../assets/css/base.scss';
+
+.searchbox-container {
+  transition: all 0.4s ease-in;
+  &.hide {
+    transform: translateY(-60px);
+  }
+}
+
+.tabs {
+  .tab-header {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    box-shadow: 0 0px 1px 0px;
+    background: $light;
+    .tab-item {
+      flex: 1;
+      font-size: 18px;
+      letter-spacing: 3px;
+      text-align: center;
+      padding: 20px;
+      &:hover {
+        cursor: pointer;
+      }
+      &:last-child {
+        border-left: 1px solid #eee;
+      }
+      &.active {
+        color: $active;
+      }
+    }
+    .active-indicator {
+      display: inline-block;
+      position: absolute;
+      top: 53px;
+      width: 50%;
+      height: 5px;
+      background: $active;
+      transition: all 0.3s ease-in-out;
+      &.friends {
+        transform: translateX(100%);
+      }
+      &.threads {
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@import './../../assets/css/base.scss';
+
+.user-picker {
+  position: relative;
+  .user-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px $text-grey;
+    border-radius: 3px;
+    overflow: hidden;
+    padding: 25px 15px 25px 15px;
+    background: $light;
+    border-bottom: 1px solid $text-grey;
+    h4 {
+      font-weight: 400;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    .arrow {
+      transform: rotate(180deg);
+      transition: all 0.4s ease-in;
+      height: 10px;
+    }
+  }
+  .user-picker-content {
+    position: absolute;
+    background: #fafafa;
+    z-index: 1;
+    transition: 0.3s all ease-in;
+    top: 64px;
+    width: 100%;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    max-height: 0;
+    overflow: hidden;
+    border: 1px solid $light;
+    border-top: none;
+    opacity: 0;
+    background-color: $light;
+  }
+  .user-picker-item {
+    padding: 20px;
+    text-align: left;
+    border-top: 1px solid #eeeeee;
+    &:hover {
+      background: $text-grey;
+      cursor: pointer;
+    }
+  }
+  &.is-open {
+    .user-picker-content {
+      max-height: 300px;
+      opacity: 1;
+      box-shadow: 0px 3px 4px $text-grey;
+    }
+    .arrow {
+      transform: rotate(0deg);
+    }
+  }
+}
