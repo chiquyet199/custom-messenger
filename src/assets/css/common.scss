@@ -184,3 +184,11 @@ input {
 .delay-9 {
   transition-delay: 9s;
 }
+.list-container {
+  padding: 10px 15%;
+  height: '95vh';
+  overflow-y: 'scroll';
+  @media only screen and (max-width: $mobile) {
+    padding: 10px 1%;
+  }
+}

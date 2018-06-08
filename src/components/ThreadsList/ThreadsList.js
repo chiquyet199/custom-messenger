@@ -13,7 +13,7 @@ class ThreadsList extends Component {
   render() {
     const { threads } = this.props
     return (
-      <div style={{ height: '95vh', overflowY: 'scroll' }}>
+      <div>
         {_.map(threads, (thread, idx) => {
           return (
             <AnimatedItem key={idx} idx={idx}>

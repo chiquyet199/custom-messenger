@@ -13,7 +13,7 @@ class FriendsList extends Component {
   render() {
     const { friends } = this.props
     return (
-      <div style={{ height: '95vh', overflowY: 'scroll' }}>
+      <div>
         {_.map(friends, (friend, idx) => {
           return (
             <AnimatedItem key={idx} idx={idx}>

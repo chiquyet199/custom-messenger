@@ -45,6 +45,7 @@ function enrichData(threads, getState) {
     const idx = thread.userIds.indexOf(currentUser.id)
     const friendId = thread.userIds[idx === 1 ? 0 : 1]
     thread.friend = { id: friendId, name: usersById[friendId].name, avatar: usersById[friendId].avatar }
+    thread.lastMessage = thread.messages[thread.messages.length - 1].text
   })
 }
 

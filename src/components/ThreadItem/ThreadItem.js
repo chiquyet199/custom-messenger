@@ -1,21 +1,24 @@
+import _ from 'lodash'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { Avatar, ChatBox } from 'components'
-import { setActiveThread } from 'actions/threads.action'
+import { setActiveThread, clearActiveThread } from 'actions/threads.action'
 import './ThreadItem.scss'
 
 class ThreadItem extends Component {
   static propTypes = {
     time: PropTypes.string,
     lastMessage: PropTypes.string,
+    id: PropTypes.string,
     friend: PropTypes.shape({
       name: PropTypes.string,
       id: PropTypes.string,
       avatar: PropTypes.string,
     }),
     setActiveThread: PropTypes.func,
+    clearActiveThread: PropTypes.func,
   }
 
   static defaultProps = {
@@ -31,29 +34,33 @@ class ThreadItem extends Component {
   }
 
   toggleShowContent = () => {
-    this.setState(prevState => ({ showContent: !prevState.showContent }))
-  }
-
-  onClick = () => {
-    this.props.setActiveThread(this.props.id)
+    this.setState(
+      prevState => ({ showContent: !prevState.showContent }),
+      () => {
+        if (this.state.showContent) this.props.setActiveThread(this.props.id)
+        else this.props.clearActiveThread()
+      },
+    )
   }
 
   render() {
     const { showContent } = this.state
     const { lastMessage } = this.props
-    const { time, avatar, name } = this.props.friend
-    console.log(this.props)
+    const { avatar, name } = this.props.friend
+    const time = `${_.random(10, 23)} : ${_.random(11, 59)}`
     return (
-      <div className="thread-item-wrapper">
-        <div onClick={this.onClick} className="thread-item">
+      <div onClick={this.toggleShowContent} className={`thread-item-wrapper ${showContent ? 'active' : ''}`}>
+        <div className="thread-item">
           <Avatar url={avatar} />
           <div className="tri-content-overview">
             <p className="tri-name">{name}</p>
-            <p className="tri-last-mes">{lastMessage}</p>
+            {!showContent && <p className="tri-last-mes">{lastMessage}</p>}
           </div>
-          <span className="tri-time">{time}</span>
+          {!showContent && <span className="tri-time">{time}</span>}
         </div>
-        {showContent && <ChatBox />}
+        <div className={`chat-box-wrapper`}>
+          <ChatBox />
+        </div>
       </div>
     )
   }
@@ -62,6 +69,7 @@ class ThreadItem extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     setActiveThread: threadId => dispatch(setActiveThread(threadId)),
+    clearActiveThread: () => dispatch(clearActiveThread()),
   }
 }
 

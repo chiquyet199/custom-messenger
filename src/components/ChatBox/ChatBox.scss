@@ -1,0 +1,39 @@
+@import './../../assets/css/base.scss';
+
+.chat-box {
+  background: rgba($light, 0.8);
+  min-height: 100px;
+  padding: 20px 10px;
+  .mes {
+    margin: 15px 0;
+    display: flex;
+    .db-avatar {
+      margin-right: 10px;
+    }
+    &.own {
+      justify-content: flex-end;
+      span {
+        background: $light;
+      }
+    }
+    span {
+      padding: 5px;
+      border-radius: 5px;
+      background: rgba($active, 0.7);
+      display: inline-block;
+    }
+  }
+  .mes-input {
+    margin-top: 30px;
+    padding: 0 10%;
+    input {
+      padding-left: 15px;
+      height: 30px;
+      border-radius: 10px;
+      box-shadow: none;
+      width: 100%;
+      border-style: none;
+      box-shadow: 0 0 1px 0 #eee;
+    }
+  }
+}

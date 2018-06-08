@@ -1,7 +1,6 @@
 @import './../../assets/css/base.scss';
 
 .friend-item {
-  max-width: 1000px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,12 +9,6 @@
   box-shadow: 0 0px 4px 0px #eee;
   padding: 10px;
   margin: 10px 0;
-  width: 70%;
-  transform: translateX(19%);
-  @media only screen and (max-width: $mobile) {
-    width: 95%;
-    transform: translateX(0);
-  }
   &:hover {
     cursor: pointer;
   }
