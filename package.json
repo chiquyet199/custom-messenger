@@ -11,7 +11,7 @@
     "review": "npm run lint && npm test",
     "start": "npm run build && NODE_ENV=production node server.js"
   },
-  "author": "aleph",
+  "author": "chiquyet199",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",

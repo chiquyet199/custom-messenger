@@ -18,28 +18,38 @@ class Login extends Component {
   }
 
   userPickerSelection = userId => {
-    setTimeout(() => {
-      this.setState({ hideContent: true })
+    this.animateOutContent().then(() => {
+      this.callLogin(userId)
+    })
+  }
+
+  animateOutContent = () => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.setState({ hideContent: true })
+        resolve()
+      }, 400)
+    })
+  }
+
+  callLogin = userId => {
+    return new Promise(resolve => {
       setTimeout(() => {
         this.props.login(userId)
+        resolve()
       }, 400)
-    }, 400)
+    })
   }
 
   render() {
     const { hideContent } = this.state
-    // const { currentUSer } = this.props
 
     return (
       <div className="db-main">
-        {/* {currentUSer ? (
-          <h2>{`Welcome back ${currentUSer.name}. We will redirect you to home page.`}}</h2>
-        ) : ( */}
         <div className={`login-container ${hideContent ? 'hide' : ''}`}>
           <h2>Please choose an account before using Donald Buddies</h2>
           <UserPicker onSelect={this.userPickerSelection} />
         </div>
-        {/* )} */}
       </div>
     )
   }
