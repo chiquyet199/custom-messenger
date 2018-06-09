@@ -2,6 +2,7 @@
 
 .searchbox-container {
   transition: all 0.4s ease-in;
+  // transition-delay: 1s;
   &.hide {
     transform: translateY(-60px);
   }

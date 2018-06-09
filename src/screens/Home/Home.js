@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { navigate } from 'services/navigate'
 import { SearchBox, ThreadsList, FriendsList } from 'components'
+import routes from 'configs/routes'
+
 import './Home.scss'
 
 class Home extends Component {
-  static propTypes = {
-    currentUser: PropTypes.any,
-  }
+  static propTypes = {}
 
   state = {
     hideSearchBox: true,
@@ -24,9 +25,8 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.animateToShowSearchBox()
-    }, 200)
+    if (!this.props.currentUser) navigate(routes.Login)
+    else setTimeout(this.animateToShowSearchBox, 200)
   }
 
   animateToShowSearchBox = () => {
@@ -39,7 +39,7 @@ class Home extends Component {
     return (
       <div className="db-main">
         <div className={`searchbox-container ${hideSearchBox ? 'hide' : ''}`}>
-          <SearchBox avatar={currentUser.avatar} />
+          <SearchBox avatar={currentUser ? currentUser.avatar : ''} />
         </div>
         <div className="tabs">
           <div className="tab-header">
