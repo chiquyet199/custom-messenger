@@ -13,7 +13,7 @@ class ThreadsList extends Component {
   render() {
     const { threads } = this.props
     return (
-      <div>
+      <div className="list-container">
         {_.map(threads, (thread, idx) => {
           return (
             <AnimatedItem key={idx} idx={idx}>

@@ -5,7 +5,7 @@ import { Switch, Route, HashRouter as Router } from 'react-router-dom'
 
 import routes from 'configs/routes'
 import { getUsers } from 'actions/users.action'
-import { Home, Login } from 'screens'
+import { Login, Threads, Friends } from 'screens'
 
 class App extends React.Component {
   static propTypes = {
@@ -20,7 +20,8 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path={routes.Home} component={Home} />
+          <Route path={routes.Threads} component={Threads} />
+          <Route path={routes.Friends} component={Friends} />
           <Route exact path={routes.Login} component={Login} />
         </Switch>
       </Router>

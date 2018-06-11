@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { getListThreads, createNewThread } from 'services/rest'
+import { getListThreads, createNewThread, getMessageThread } from 'services/rest'
 
 export const CREATE_THREAD = 'CREATE_THREAD'
 export const GET_THREADS = 'GET_THREADS'
@@ -33,7 +33,7 @@ function getThreads(userId) {
         type: GET_THREADS,
         payload: threads,
       })
-      navigate(routes.Home)
+      navigate(routes.Threads)
     })
   }
 }
@@ -51,11 +51,13 @@ function enrichData(threads, getState) {
 
 function setActiveThread(threadId) {
   return (dispatch, getState) => {
-    const allThreadsById = getState().threads.threadsById
-    const activeThread = allThreadsById[threadId]
-    dispatch({
-      type: SET_ACTIVE_THREAD,
-      payload: activeThread,
+    getMessageThread(threadId).then(activeThread => {
+      const allThreadsById = getState().threads.threadsById
+      const extendActiveThread = allThreadsById[threadId]
+      dispatch({
+        type: SET_ACTIVE_THREAD,
+        payload: { ...extendActiveThread, messages: activeThread.messages, userIds: activeThread.userIds },
+      })
     })
   }
 }

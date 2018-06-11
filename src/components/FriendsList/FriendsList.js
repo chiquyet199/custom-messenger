@@ -13,7 +13,7 @@ class FriendsList extends Component {
   render() {
     const { friends } = this.props
     return (
-      <div>
+      <div className="list-container">
         {_.map(friends, (friend, idx) => {
           return (
             <AnimatedItem key={idx} idx={idx}>

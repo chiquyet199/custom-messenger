@@ -43,7 +43,7 @@ function getListThreads(userId) {
 function getMessageThread(threadId) {
   return new Promise(resolve => {
     Api.get(`/threads/${threadId}`).then(response => {
-      resolve()
+      resolve(response.data)
     })
   })
 }

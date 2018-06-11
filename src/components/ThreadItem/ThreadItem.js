@@ -2,8 +2,9 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import { Avatar, ChatBox } from 'components'
+import { Avatar } from 'components'
 import { setActiveThread, clearActiveThread } from 'actions/threads.action'
 import './ThreadItem.scss'
 
@@ -33,36 +34,36 @@ class ThreadItem extends Component {
     showContent: false,
   }
 
-  toggleShowContent = () => {
-    this.setState(
-      prevState => ({ showContent: !prevState.showContent }),
-      () => {
-        if (this.state.showContent) this.props.setActiveThread(this.props.id)
-        else {
-          setTimeout(this.props.clearActiveThread, 400)
-        }
-      },
-    )
-  }
+  // toggleShowContent = () => {
+  //   this.setState(
+  //     prevState => ({ showContent: !prevState.showContent }),
+  //     () => {
+  //       if (this.state.showContent) this.props.setActiveThread(this.props.id)
+  //       else {
+  //         setTimeout(this.props.clearActiveThread, 400)
+  //       }
+  //     },
+  //   )
+  // }
 
   render() {
-    const { showContent } = this.state
-    const { lastMessage } = this.props
+    const { lastMessage, id } = this.props
     const { avatar, name } = this.props.friend
     const time = `${_.random(10, 23)} : ${_.random(11, 59)}`
     return (
-      <div onClick={this.toggleShowContent} className={`thread-item-wrapper ${showContent ? 'active' : ''}`}>
-        <div className="thread-item">
-          <Avatar url={avatar} />
-          <div className="tri-content-overview">
-            <p className="tri-name">{name}</p>
-            {!showContent && <p className="tri-last-mes">{lastMessage}</p>}
+      <div>
+        <Link to={{ pathname: `/threads/${id}` }}>
+          <div className={`thread-item-wrapper`}>
+            <div className="thread-item">
+              <Avatar url={avatar} />
+              <div className="tri-content-overview">
+                <p className="tri-name">{name}</p>
+                <p className="tri-last-mes">{lastMessage}</p>
+              </div>
+              <span className="tri-time">{time}</span>
+            </div>
           </div>
-          {!showContent && <span className="tri-time">{time}</span>}
-        </div>
-        <div className={`chat-box-wrapper`}>
-          <ChatBox />
-        </div>
+        </Link>
       </div>
     )
   }
