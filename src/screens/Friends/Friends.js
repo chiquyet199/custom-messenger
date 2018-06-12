@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { navigate } from 'services/navigate'
 import { Switch, Route } from 'react-router-dom'
-import { SearchBox, TabBar, FriendsList } from 'components'
+
+import { auth } from 'hocs'
 import routes from 'configs/routes'
+import { SearchBox, TabBar, FriendsList } from 'components'
 
 class Friends extends Component {
   static propTypes = {
     currentUser: PropTypes.object,
-  }
-
-  componentDidMount() {
-    if (!this.props.currentUser) navigate(routes.Login)
   }
 
   render() {
@@ -35,4 +32,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Friends)
+export default connect(mapStateToProps)(auth(Friends))

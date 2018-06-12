@@ -22,14 +22,14 @@ function getListUsers() {
 function getUser(userId) {
   return new Promise(resolve => {
     Api.get(`/users/${userId}`).then(response => {
-      resolve()
+      resolve(response)
     })
   })
 }
 function getListNewMessages(userId) {
   return new Promise(resolve => {
     Api.get(`/users/${userId}/new-messages`).then(response => {
-      resolve()
+      resolve(response)
     })
   })
 }
@@ -57,7 +57,7 @@ function createNewThread(userIds) {
 function createNewMessage(threadId, senderId, text) {
   return new Promise(resolve => {
     Api.post(`/threads/${threadId}/messages`, { senderId, text }).then(response => {
-      resolve(response)
+      resolve(response.data)
     })
   })
 }

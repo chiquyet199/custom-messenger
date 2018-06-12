@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { navigate } from 'services/navigate'
+
+import { auth } from 'hocs'
 import { Switch, Route } from 'react-router-dom'
 import { SearchBox, TabBar, ThreadsList, ThreadDetail } from 'components'
 import routes from 'configs/routes'
@@ -9,10 +10,6 @@ import routes from 'configs/routes'
 class Threads extends Component {
   static propTypes = {
     currentUser: PropTypes.object,
-  }
-
-  componentDidMount() {
-    if (!this.props.currentUser) navigate(routes.Login)
   }
 
   render() {
@@ -36,4 +33,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Threads)
+export default connect(mapStateToProps)(auth(Threads))

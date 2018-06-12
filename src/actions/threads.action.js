@@ -69,18 +69,8 @@ function createNewThreadMessage(messages) {
     const activeThread = state.threads.activeThread
     const currentUser = state.user
     if (!activeThread || !currentUser) return
-    dispatch({
-      type: CREATE_NEW_MESSAGE,
-      payload: {
-        id: 'bus-w123',
-        image: 'https://qz.com/wp-content/uploads/2015/10/rtr398ek.jpg?quality=80&strip=all&w=3200',
-        senderId: 'u1',
-        text: 'Hello, how r u today?',
-        timestamp: 123456789,
-      },
+    createNewMessage(activeThread.id, currentUser.id, messages).then(newMessage => {
+      dispatch({ type: CREATE_NEW_MESSAGE, payload: newMessage })
     })
-    // createNewMessage(activeThread.id, currentUser.id, messages).then(newMessage => {
-    //   dispatch({ type: CREATE_NEW_MESSAGE, payload: newMessage })
-    // })
   }
 }

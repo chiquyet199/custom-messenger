@@ -22,7 +22,7 @@ class AnimatedItem extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ hideContent: false })
-    }, this.props.delay * this.props.idx)
+    }, this.props.delay * this.props.idx + 300)
   }
 
   render() {

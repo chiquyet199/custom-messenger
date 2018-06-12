@@ -29,7 +29,7 @@ class ThreadDetail extends Component {
     setTimeout(() => {
       this.animateContent()
       this.props.setActiveThread(this.props.match.params.id)
-    }, 0)
+    }, 300)
   }
 
   componentWillUnmount() {

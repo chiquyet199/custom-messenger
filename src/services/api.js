@@ -1,9 +1,12 @@
 import axios from 'axios'
 import { BASE_URL } from 'configs/rest'
 
+axios.defaults.headers = null
+
 const options = {
   baseURL: BASE_URL,
   timeout: 6000000,
+  headers: null,
 }
 
 function post(url, data) {
@@ -14,8 +17,6 @@ function post(url, data) {
     method: 'POST',
     data,
   }
-  console.log(postOptions)
-  // return axios.post({ url: `${BASE_URL}${url}`, data })
   return axios(postOptions).then(logApiCall)
 }
 
