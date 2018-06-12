@@ -14,11 +14,11 @@
   h2 {
     display: inline-block;
     width: 70%;
-    font-weight: 400;
-    font-size: 24px;
+    font-weight: $font-weight-light;
+    font-size: $font-size-headline;
     margin-bottom: 40px;
     margin-top: 100px;
-    color: rgba(255, 255, 255, 0.9);
+    color: $light-opacity;
     text-align: center;
     line-height: 30px;
   }

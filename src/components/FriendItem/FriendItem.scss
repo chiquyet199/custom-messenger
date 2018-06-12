@@ -6,7 +6,7 @@
   align-items: center;
   background: $light;
   border-radius: 3px;
-  box-shadow: 0 0px 4px 0px #eee;
+  box-shadow: 0 0px 4px 0px $light-grey;
   padding: 10px;
   margin: 10px 0;
   &:hover {

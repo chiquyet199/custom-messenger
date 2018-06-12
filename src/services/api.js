@@ -7,7 +7,15 @@ const options = {
 }
 
 function post(url, data) {
-  const postOptions = { ...options, url, method: 'POST', data }
+  const postOptions = {
+    baseURL: BASE_URL,
+    timeout: 6000000,
+    url,
+    method: 'POST',
+    data,
+  }
+  console.log(postOptions)
+  // return axios.post({ url: `${BASE_URL}${url}`, data })
   return axios(postOptions).then(logApiCall)
 }
 
@@ -22,7 +30,5 @@ function logApiCall(response) {
     resolve(response)
   })
 }
-
-function handleError() {}
 
 export default { get, post }

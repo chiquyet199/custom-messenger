@@ -1,25 +1,28 @@
 @import '../../assets/css/base.scss';
 
-.db-search-box {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0 10px;
-  box-shadow: 0 0px 4px 0px;
-  background: $light;
-  .search-icon {
-    width: 30px;
-    height: 30px;
-  }
-  input {
-    flex: 1;
-    height: 50px;
-    font-size: $font-size-headline;
-    padding-left: 20px;
-    border: none;
-    color: $text-grey;
-  }
-  .avatar-container {
-    width: 30px;
+.db-search-box-wrapper {
+  min-height: 52px;
+  .db-search-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 0 0px 4px 0px;
+    background: $light;
+    .search-icon {
+      width: 30px;
+      height: 30px;
+    }
+    input {
+      flex: 1;
+      height: 50px;
+      font-size: $font-size-headline;
+      padding-left: 20px;
+      border: none;
+      color: $text-grey;
+    }
+    .avatar-container {
+      width: 30px;
+    }
   }
 }

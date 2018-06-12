@@ -13,7 +13,7 @@
     background: $light;
     border-bottom: 1px solid $text-grey;
     h4 {
-      font-weight: 400;
+      font-weight: $font-weight-light;
     }
     &:hover {
       cursor: pointer;
@@ -26,7 +26,7 @@
   }
   .user-picker-content {
     position: absolute;
-    background: #fafafa;
+    background: $light-grey;
     z-index: 1;
     transition: 0.3s all ease-in;
     top: 64px;
@@ -43,7 +43,7 @@
   .user-picker-item {
     padding: 20px;
     text-align: left;
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid $light-grey;
     &:hover {
       background: $text-grey;
       cursor: pointer;

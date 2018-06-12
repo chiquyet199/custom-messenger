@@ -2,11 +2,12 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 
 import { Avatar } from 'components'
 import { setActiveThread, clearActiveThread } from 'actions/threads.action'
 import './ThreadItem.scss'
+import { navigate } from 'services/navigate'
+import routes from 'configs/routes'
 
 class ThreadItem extends Component {
   static propTypes = {
@@ -34,36 +35,28 @@ class ThreadItem extends Component {
     showContent: false,
   }
 
-  // toggleShowContent = () => {
-  //   this.setState(
-  //     prevState => ({ showContent: !prevState.showContent }),
-  //     () => {
-  //       if (this.state.showContent) this.props.setActiveThread(this.props.id)
-  //       else {
-  //         setTimeout(this.props.clearActiveThread, 400)
-  //       }
-  //     },
-  //   )
-  // }
+  goToDetail = () => {
+    navigate(`${routes.Threads}/${this.props.id}`)
+  }
 
   render() {
-    const { lastMessage, id } = this.props
+    const { lastMessage } = this.props
     const { avatar, name } = this.props.friend
     const time = `${_.random(10, 23)} : ${_.random(11, 59)}`
     return (
       <div>
-        <Link to={{ pathname: `/threads/${id}` }}>
-          <div className={`thread-item-wrapper`}>
-            <div className="thread-item">
-              <Avatar url={avatar} />
-              <div className="tri-content-overview">
-                <p className="tri-name">{name}</p>
-                <p className="tri-last-mes">{lastMessage}</p>
-              </div>
-              <span className="tri-time">{time}</span>
+        {/* <Link to={{ pathname: `/threads/${id}` }}> */}
+        <div onClick={this.goToDetail} className={`thread-item-wrapper`}>
+          <div className="thread-item">
+            <Avatar url={avatar} />
+            <div className="tri-content-overview">
+              <p className="tri-name">{name}</p>
+              <p className="tri-last-mes">{lastMessage}</p>
             </div>
+            <span className="tri-time">{time}</span>
           </div>
-        </Link>
+        </div>
+        {/* </Link> */}
       </div>
     )
   }

@@ -1,5 +1,7 @@
 $dark: #383838;
 $light: #ffffff;
+$light-opacity: rgba(#ffffff, 0.9);
+$light-grey: #eeeeee;
 
 $active: #1195a2;
 
@@ -11,13 +13,10 @@ $font-weight-light: 300;
 $font-weight-regular: 400;
 $font-weight-bold: 600;
 
-$font-size-headline1: 38px;
-$font-size-headline2: 30px;
-$font-size-headline3: 22px;
-$font-size-headline: 18px;
+$font-size-headline: 22px;
+$font-size-big: 18px;
 $font-size-normal: 14px;
 $font-size-small: 12px;
-$font-size-tiny: 10px;
 
 $desktop: 1200px;
 $mobile: 480px;

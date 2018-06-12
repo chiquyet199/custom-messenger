@@ -12,12 +12,13 @@ class SearchBox extends Component {
 
   render() {
     const { avatar } = this.props
-    console.log(avatar)
     return (
-      <div className="db-search-box">
-        <img className={'search-icon'} src={require('assets/images/search.svg')} />
-        <input placeholder="Search" />
-        <Avatar url={avatar} className="avatar small" />
+      <div className="db-search-box-wrapper">
+        <div className="db-search-box">
+          <img className={'search-icon'} src={require('assets/images/search.svg')} />
+          <input placeholder="Search" />
+          <Avatar url={avatar} className="avatar small" />
+        </div>
       </div>
     )
   }

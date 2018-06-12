@@ -5,7 +5,7 @@
     .thread-item {
       background: $active;
       .tri-name {
-        font-size: 24px;
+        font-size: $font-size-headline;
       }
     }
     .chat-box-wrapper {
@@ -28,7 +28,7 @@
     align-items: center;
     background: $light;
     border-radius: 3px;
-    box-shadow: 0 0px 4px 0px #eee;
+    box-shadow: 0 0px 4px 0px $light-grey;
     padding: 10px;
     margin: 10px 0;
     &:hover {
@@ -46,7 +46,7 @@
       }
     }
     .tri-time {
-      font-size: 12px;
+      font-size: $font-size-small;
       color: $text-grey;
     }
   }

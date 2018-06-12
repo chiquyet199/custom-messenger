@@ -1,15 +1,16 @@
 import _ from 'lodash'
-import { getListThreads, createNewThread, getMessageThread } from 'services/rest'
+import { getListThreads, createNewThread, getMessageThread, createNewMessage } from 'services/rest'
 
 export const CREATE_THREAD = 'CREATE_THREAD'
 export const GET_THREADS = 'GET_THREADS'
 export const CLEAR_ACTIVE_THREAD = 'CLEAR_ACTIVE_THREAD'
 export const SET_ACTIVE_THREAD = 'SET_ACTIVE_THREAD'
+export const CREATE_NEW_MESSAGE = 'CREATE_NEW_MESSAGE'
 
 import { navigate } from 'services/navigate'
 import routes from 'configs/routes'
 
-export { createThread, getThreads, setActiveThread, clearActiveThread }
+export { createThread, getThreads, setActiveThread, clearActiveThread, createNewThreadMessage }
 
 function clearActiveThread() {
   return {
@@ -59,5 +60,27 @@ function setActiveThread(threadId) {
         payload: { ...extendActiveThread, messages: activeThread.messages, userIds: activeThread.userIds },
       })
     })
+  }
+}
+
+function createNewThreadMessage(messages) {
+  return (dispatch, getState) => {
+    const state = getState()
+    const activeThread = state.threads.activeThread
+    const currentUser = state.user
+    if (!activeThread || !currentUser) return
+    dispatch({
+      type: CREATE_NEW_MESSAGE,
+      payload: {
+        id: 'bus-w123',
+        image: 'https://qz.com/wp-content/uploads/2015/10/rtr398ek.jpg?quality=80&strip=all&w=3200',
+        senderId: 'u1',
+        text: 'Hello, how r u today?',
+        timestamp: 123456789,
+      },
+    })
+    // createNewMessage(activeThread.id, currentUser.id, messages).then(newMessage => {
+    //   dispatch({ type: CREATE_NEW_MESSAGE, payload: newMessage })
+    // })
   }
 }

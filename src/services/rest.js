@@ -54,6 +54,12 @@ function createNewThread(userIds) {
     })
   })
 }
+function createNewMessage(threadId, senderId, text) {
+  return new Promise(resolve => {
+    Api.post(`/threads/${threadId}/messages`, { senderId, text }).then(response => {
+      resolve(response)
+    })
+  })
+}
 function addFriend() {}
 function markAsSeenByUser() {}
-function createNewMessage() {}
